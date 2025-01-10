@@ -1,0 +1,41 @@
+name: Update Indices Daily
+
+# Trigger the workflow daily and allow manual runs
+on:
+  schedule:
+    - cron: '0 23 * * *'  # Runs daily at midnight UTC
+  workflow_dispatch:      # Allows manual triggering from GitHub UI
+
+jobs:
+  update_indices:
+    runs-on: ubuntu-latest  # Runs on an Ubuntu virtual machine
+
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11.5'
+
+      # Step 3: Install dependencies
+      - name: Install Dependencies
+        run: |
+          pip install yfinance pymysql pandas sqlalchemy
+
+      # Step 4: Run the Python script with environment variables
+      - name: Run Update Script
+        env:
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+        run: |
+          python update_indices.py
+
+      # Step 5: Verify and Log Success
+      - name: Workflow Success
+        run: echo "Indices updated successfully!"
