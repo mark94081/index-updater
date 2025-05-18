@@ -86,8 +86,8 @@ def fetch_and_insert_data(symbol, period):
         print(f"Fetching data for {table_name} into table `{table_name}`...")
         ticker = Ticker(str(symbol))  # Ensure symbol is string
         if period == 'max':
-            start_date = '2014-01-01'
-            end_date = '2021-12-31'
+            start_date = '2014-01-02'
+            end_date = '2014-01-03'
             df = ticker.history(start=start_date, end=end_date, auto_adjust=False)#
             print(df.tail())
         else:
