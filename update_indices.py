@@ -9,7 +9,7 @@ import os
 # List of indices to fetch
 INDICES = {
     "ES=F": "E_Mini_SP_500",
-    "NQ=F": "Nasdaq_100"
+    #"NQ=F": "Nasdaq_100"
 }
 
 
@@ -86,7 +86,7 @@ def fetch_and_insert_data(symbol, period):
         print(f"Fetching data for {table_name} into table `{table_name}`...")
         ticker = Ticker(str(symbol))  # Ensure symbol is string
         if period == 'max':
-            start_date = '2022-01-02'
+            start_date = '2007-01-02'
             #end_date = '2021-12-31'
             df = ticker.history(start=start_date, auto_adjust=False)#, end=end_date
             print(df.tail())
