@@ -8,7 +8,7 @@ import os
 
 # List of indices to fetch
 INDICES = {
-    "ES=F": "E_Mini_SP_500",
+    "ES=F": "E_Mini_SP_500"
     #"NQ=F": "Nasdaq_100"
 }
 
