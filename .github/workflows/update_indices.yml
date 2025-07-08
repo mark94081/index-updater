@@ -3,7 +3,7 @@ name: Update Indices Daily
 # Trigger the workflow daily and allow manual runs
 on:
   schedule:
-    - cron: '0 8 * * *'  # Runs daily at midnight UTC
+    - cron: '0 23 * * *'  # Runs daily at midnight UTC
   workflow_dispatch:      # Allows manual triggering from GitHub UI
 
 jobs:
